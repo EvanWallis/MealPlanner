@@ -3,71 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meal Plan Tracker</title>
+  <title>Meal Planner</title>
   <link rel="stylesheet" href="style.css">
-  <!-- PWA Manifest & Meta Tags -->
   <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#2c5282">
+  <meta name="theme-color" content="#ffffff">
 </head>
 <body>
   <div class="container">
-    <h1>Meal Plan Tracker</h1>
-    <p class="subtitle">Track your meals simply and easily.</p>
+    <h1>Meal Planner</h1>
     
-    <!-- Toggle to show/hide Snack (formerly Meal 4) -->
-    <div class="toggle-group">
-      <label>
-        <input type="checkbox" id="toggleFourthMeal"> Enable Snack
-      </label>
-    </div>
-    
-    <!-- Meal list -->
-    <div class="meal-list" id="mealList">
+    <!-- Meal List -->
+    <div class="meal-list">
       <div class="meal" id="meal1">
-        <h2>Pre-Workout Meal</h2>
+        <h2>Meal 1</h2>
         <p>Protein: <span class="protein">1</span></p>
+        <button class="add-protein">+ Protein</button>
+        <button class="subtract-protein">- Protein</button>
         <p>Carbs: <span class="carbs">1</span></p>
-        <button onclick="adjustMeal(1, 1)">+ Carbs</button>
-        <button onclick="adjustMeal(1, -1)">- Carbs</button>
+        <button class="add-carbs">+ Carbs</button>
+        <button class="subtract-carbs">- Carbs</button>
         <button onclick="checkOffMeal('meal1')">Check Off</button>
       </div>
       <div class="meal" id="meal2">
-        <h2>Lunch</h2>
+        <h2>Meal 2</h2>
         <p>Protein: <span class="protein">1</span></p>
+        <button class="add-protein">+ Protein</button>
+        <button class="subtract-protein">- Protein</button>
         <p>Carbs: <span class="carbs">1</span></p>
-        <button onclick="adjustMeal(2, 1)">+ Carbs</button>
-        <button onclick="adjustMeal(2, -1)">- Carbs</button>
+        <button class="add-carbs">+ Carbs</button>
+        <button class="subtract-carbs">- Carbs</button>
         <button onclick="checkOffMeal('meal2')">Check Off</button>
       </div>
       <div class="meal" id="meal3">
-        <h2>Dinner</h2>
+        <h2>Meal 3</h2>
         <p>Protein: <span class="protein">1</span></p>
+        <button class="add-protein">+ Protein</button>
+        <button class="subtract-protein">- Protein</button>
         <p>Carbs: <span class="carbs">1</span></p>
-        <button onclick="adjustMeal(3, 1)">+ Carbs</button>
-        <button onclick="adjustMeal(3, -1)">- Carbs</button>
+        <button class="add-carbs">+ Carbs</button>
+        <button class="subtract-carbs">- Carbs</button>
         <button onclick="checkOffMeal('meal3')">Check Off</button>
       </div>
-      <div class="meal hidden" id="meal4">
-        <h2>Snack</h2>
+      <div class="meal" id="meal4">
+        <h2>Meal 4</h2>
         <p>Protein: <span class="protein">1</span></p>
+        <button class="add-protein">+ Protein</button>
+        <button class="subtract-protein">- Protein</button>
         <p>Carbs: <span class="carbs">1</span></p>
-        <button onclick="adjustMeal(4, 1)">+ Carbs</button>
-        <button onclick="adjustMeal(4, -1)">- Carbs</button>
+        <button class="add-carbs">+ Carbs</button>
+        <button class="subtract-carbs">- Carbs</button>
         <button onclick="checkOffMeal('meal4')">Check Off</button>
       </div>
     </div>
     
-    <!-- Pre-Workout Extra Carbs toggle: adds/removes three carbs directly to Pre-Workout Meal -->
-    <div class="toggle-group">
-      <label>
-        <input type="checkbox" id="toggleWorkoutCarbs"> Add Pre-Workout Extra Carbs (+3)
-      </label>
-    </div>
-    
+    <!-- Sweet Treat and Reset Buttons -->
     <button id="sweetTreatBtn">Sweet Treat (-3 Carbs)</button>
-    <button id="resetBtn">Reset for Next Day</button>
+    <button id="resetBtn">Reset</button>
   </div>
   
   <script src="script.js"></script>
