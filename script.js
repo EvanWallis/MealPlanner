@@ -217,8 +217,10 @@ function resetMeals() {
     meal.classList.remove('completed');
     meal.querySelectorAll('button').forEach(btn => btn.disabled = false);
   });
+  localStorage.removeItem("lastCarbBoost"); // Clear the boost flag
   saveState();
 }
+
 
 /**
  * Toggle the "completed" state of a meal.
@@ -255,11 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Attach event listener for the "+1 Carb to All" button.
-const addCarbAllBtn = document.getElementById("addCarbAllBtn");
-if (addCarbAllBtn) {
-  addCarbAllBtn.addEventListener("click", addCarbToAll);
-}
-
+  const addCarbAllBtn = document.getElementById("addCarbAllBtn");
+  if (addCarbAllBtn) {
+    addCarbAllBtn.addEventListener("click", addCarbToAll);
+  }
+  
   // Attach event listeners for protein adjustment buttons.
   ['1', '2', '3', '4'].forEach(num => {
     const meal = document.getElementById(`meal${num}`);
