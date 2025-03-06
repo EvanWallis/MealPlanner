@@ -1,8 +1,8 @@
 {
     "name": "Meal Planner",
     "short_name": "MealPlanner",
-    "start_url": "/",
+    "start_url": "/MealPlanner/index.html",
     "display": "standalone",
     "background_color": "#f0f4f8",
     "theme_color": "#2c5282"
-  }
+}
