@@ -1,19 +1,19 @@
 :root {
   --primary-color: #3498db;
   --primary-dark: #2980b9;
-  --success-color: #27ae60;
-  --success-dark: #1e8449;
+  --success-color: #2ecc71;
+  --success-dark: #27ae60;
   --danger-color: #e74c3c;
   --danger-dark: #c0392b;
-  --text-primary: #2c3e50;
-  --text-secondary: #7f8c8d;
-  --bg-light: #f0f2f5;
-  --bg-card: #fff;
-  --bg-item: #f9f9f9;
-  --border-color: #ddd;
-  --shadow: 0 4px 10px rgba(0,0,0,0.1);
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --bg-dark: #1e1e1e;
+  --bg-card: #2c2c2c;
+  --bg-item: #333333;
+  --border-color: #444;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   --border-radius: 10px;
-  --transition: all 0.3s ease;
+  --transition: all 0.2s ease-in-out;
 }
 
 * {
@@ -24,189 +24,145 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-light);
-  margin: 0;
-  padding: 0;
+  background-color: var(--bg-dark);
   color: var(--text-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  padding: 20px;
 }
 
 .container {
-  max-width: 90%;
-  width: 500px;
-  margin: 20px auto;
+  max-width: 500px;
+  margin: auto;
   background: var(--bg-card);
-  padding: 25px;
+  padding: 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  transition: var(--transition);
 }
 
 h1 {
-  font-size: 28px;
   text-align: center;
-  margin-bottom: 25px;
-  color: var(--text-primary);
-  font-weight: 600;
-  padding-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
   border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
 }
 
-.meal-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
+/* Meal Cards */
 .meal {
-  border: 1px solid var(--border-color);
-  padding: 18px;
-  border-radius: var(--border-radius);
   background: var(--bg-item);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
 }
 
 .meal:hover {
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .meal h2 {
-  margin: 0;
   font-size: 20px;
+  margin-bottom: 10px;
   color: var(--text-primary);
 }
 
-.meal p {
-  margin: 0;
-  font-size: 16px;
-  color: var(--text-secondary);
-}
-
-/* Nutrient Controls Layout */
+/* Nutrient Controls */
 .nutrient-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Allows buttons to wrap on small screens */
-  gap: 8px;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
 }
 
 .nutrient-controls p {
-  margin: 0;
+  font-size: 16px;
   font-weight: 600;
-  color: var(--text-primary);
 }
 
 .button-group {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
-/* Protein & Carbs Emphasis */
-.protein,
-.carbs {
-  background-color: rgba(52, 152, 219, 0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-/* Meal Actions & App Actions */
-.meal-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.app-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Buttons */
+/* Button Styling */
 button {
-  background-color: var(--primary-color);
+  padding: 8px 12px;
   border: none;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-size: 15px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 90px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 button:active {
   transform: translateY(0);
 }
 
-button:disabled {
-  background-color: #bdc3c7;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-/* Plus Buttons: Green */
-.add-carbs,
-.add-protein {
-  background-color: var(--success-color);
+/* Plus & Minus Buttons */
+.add-protein,
+.add-carbs {
+  background: var(--success-color);
+  color: white;
 }
 
-.add-carbs:hover,
-.add-protein:hover {
-  background-color: var(--success-dark);
+.add-protein:hover,
+.add-carbs:hover {
+  background: var(--success-dark);
 }
 
-/* Minus Buttons: Red */
-.subtract-carbs,
-.subtract-protein {
-  background-color: var(--danger-color);
+.subtract-protein,
+.subtract-carbs {
+  background: var(--danger-color);
+  color: white;
 }
 
-.subtract-carbs:hover,
-.subtract-protein:hover {
-  background-color: var(--danger-dark);
-}
-#sweetTreatBtn {
-  background-color: var(--danger-color);
+.subtract-protein:hover,
+.subtract-carbs:hover {
+  background: var(--danger-dark);
 }
 
-#sweetTreatBtn:hover {
-  background-color: var(--danger-dark);
+/* Check Off Button */
+.meal-actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
-#resetBtn {
-  background-color: var(--success-color);
+.meal-actions button {
+  background: var(--primary-color);
+  color: white;
 }
 
-#resetBtn:hover {
-  background-color: var(--success-dark);
+.meal-actions button:hover {
+  background: var(--primary-dark);
 }
 
-/* Completed Meal Styling */
+/* App Actions */
+.app-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Completed Meal */
 .meal.completed {
-  opacity: 0.7;
+  opacity: 0.5;
   border-left: 4px solid var(--success-color);
 }
 
-.meal.completed h2, 
+.meal.completed h2,
 .meal.completed p {
   text-decoration: line-through;
 }
@@ -221,67 +177,31 @@ button:disabled {
   font-weight: bold;
 }
 
-/* Mobile responsiveness improvements */
+/* Mobile Responsiveness */
 @media screen and (max-width: 600px) {
   .container {
     width: 100%;
-    max-width: 100%;
     margin: 0;
     padding: 16px;
     border-radius: 0;
-    min-height: 100vh;
   }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+
   .meal {
-    padding: 15px;
+    padding: 14px;
   }
-  
+
   .meal h2 {
     font-size: 18px;
   }
-  
-  .meal p {
-    font-size: 14px;
-  }
-  
-  button {
-    padding: 8px 12px;
-    font-size: 14px;
-    min-width: 80px;
-  }
-  
-  .button-group {
-    gap: 4px;
-  }
-  
+
   .nutrient-controls {
     flex-direction: column;
     align-items: flex-start;
   }
-  
-  .app-actions {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-light: #1a1a1a;
-    --bg-card: #2c2c2c;
-    --bg-item: #333333;
-    --text-primary: #e0e0e0;
-    --text-secondary: #b0b0b0;
-    --border-color: #444;
-  }
-  
   button {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 6px 10px;
+    font-size: 13px;
+    min-width: 80px;
   }
 }
