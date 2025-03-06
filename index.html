@@ -18,49 +18,106 @@
     <div class="meal-list">
       <div class="meal" id="meal1">
         <h2>Meal 1</h2>
-        <p>Protein: <span class="protein">1</span></p>
-        <button class="add-protein">+ Protein</button>
-        <button class="subtract-protein">- Protein</button>
-        <p>Carbs: <span class="carbs">1</span></p>
-        <button class="add-carbs">+ Carbs</button>
-        <button class="subtract-carbs">- Carbs</button>
-        <button onclick="checkOffMeal('meal1')">Check Off</button>
+        
+        <div class="nutrient-controls">
+          <p>Protein: <span class="protein">1</span></p>
+          <div class="button-group">
+            <button class="add-protein">+ Protein</button>
+            <button class="subtract-protein">- Protein</button>
+          </div>
+        </div>
+        
+        <div class="nutrient-controls">
+          <p>Carbs: <span class="carbs">1</span></p>
+          <div class="button-group">
+            <button class="add-carbs">+ Carbs</button>
+            <button class="subtract-carbs">- Carbs</button>
+          </div>
+        </div>
+        
+        <div class="meal-actions">
+          <button onclick="checkOffMeal('meal1')">Check Off</button>
+        </div>
       </div>
+      
       <div class="meal" id="meal2">
         <h2>Meal 2</h2>
-        <p>Protein: <span class="protein">1</span></p>
-        <button class="add-protein">+ Protein</button>
-        <button class="subtract-protein">- Protein</button>
-        <p>Carbs: <span class="carbs">1</span></p>
-        <button class="add-carbs">+ Carbs</button>
-        <button class="subtract-carbs">- Carbs</button>
-        <button onclick="checkOffMeal('meal2')">Check Off</button>
+        
+        <div class="nutrient-controls">
+          <p>Protein: <span class="protein">1</span></p>
+          <div class="button-group">
+            <button class="add-protein">+ Protein</button>
+            <button class="subtract-protein">- Protein</button>
+          </div>
+        </div>
+        
+        <div class="nutrient-controls">
+          <p>Carbs: <span class="carbs">1</span></p>
+          <div class="button-group">
+            <button class="add-carbs">+ Carbs</button>
+            <button class="subtract-carbs">- Carbs</button>
+          </div>
+        </div>
+        
+        <div class="meal-actions">
+          <button onclick="checkOffMeal('meal2')">Check Off</button>
+        </div>
       </div>
+      
       <div class="meal" id="meal3">
         <h2>Meal 3</h2>
-        <p>Protein: <span class="protein">1</span></p>
-        <button class="add-protein">+ Protein</button>
-        <button class="subtract-protein">- Protein</button>
-        <p>Carbs: <span class="carbs">1</span></p>
-        <button class="add-carbs">+ Carbs</button>
-        <button class="subtract-carbs">- Carbs</button>
-        <button onclick="checkOffMeal('meal3')">Check Off</button>
+        
+        <div class="nutrient-controls">
+          <p>Protein: <span class="protein">1</span></p>
+          <div class="button-group">
+            <button class="add-protein">+ Protein</button>
+            <button class="subtract-protein">- Protein</button>
+          </div>
+        </div>
+        
+        <div class="nutrient-controls">
+          <p>Carbs: <span class="carbs">1</span></p>
+          <div class="button-group">
+            <button class="add-carbs">+ Carbs</button>
+            <button class="subtract-carbs">- Carbs</button>
+          </div>
+        </div>
+        
+        <div class="meal-actions">
+          <button onclick="checkOffMeal('meal3')">Check Off</button>
+        </div>
       </div>
+      
       <div class="meal" id="meal4">
         <h2>Meal 4</h2>
-        <p>Protein: <span class="protein">1</span></p>
-        <button class="add-protein">+ Protein</button>
-        <button class="subtract-protein">- Protein</button>
-        <p>Carbs: <span class="carbs">1</span></p>
-        <button class="add-carbs">+ Carbs</button>
-        <button class="subtract-carbs">- Carbs</button>
-        <button onclick="checkOffMeal('meal4')">Check Off</button>
+        
+        <div class="nutrient-controls">
+          <p>Protein: <span class="protein">1</span></p>
+          <div class="button-group">
+            <button class="add-protein">+ Protein</button>
+            <button class="subtract-protein">- Protein</button>
+          </div>
+        </div>
+        
+        <div class="nutrient-controls">
+          <p>Carbs: <span class="carbs">1</span></p>
+          <div class="button-group">
+            <button class="add-carbs">+ Carbs</button>
+            <button class="subtract-carbs">- Carbs</button>
+          </div>
+        </div>
+        
+        <div class="meal-actions">
+          <button onclick="checkOffMeal('meal4')">Check Off</button>
+        </div>
       </div>
     </div>
     
-    <!-- Sweet Treat and Reset Buttons -->
-    <button id="sweetTreatBtn">Sweet Treat (-3 Carbs)</button>
-    <button id="resetBtn">Reset</button>
+    <!-- App Actions -->
+    <div class="app-actions">
+      <button id="sweetTreatBtn">Sweet Treat (-3 Carbs)</button>
+      <button id="resetBtn">Reset</button>
+    </div>
   </div>
   
   <script src="script.js"></script>
