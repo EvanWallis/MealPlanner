@@ -1,9 +1,9 @@
 // script.js
 
-// Helper: Get all visible (active) meals
+// Helper: Get all visible (active) meals that are not completed
 function getActiveMeals() {
     return Array.from(document.querySelectorAll('.meal')).filter(
-      meal => !meal.classList.contains('hidden')
+      meal => !meal.classList.contains('hidden') && !meal.classList.contains('completed')
     );
   }
   
@@ -21,12 +21,18 @@ function getActiveMeals() {
    * For a negative change (d < 0), carbs are donated from the target meal to others.
    */
   function adjustMeal(mealNumber, d) {
-    const activeMeals = getActiveMeals();
     const targetMeal = document.getElementById(`meal${mealNumber}`);
-    if (!targetMeal || targetMeal.classList.contains('hidden')) return;
+    // If target meal is hidden or completed, do nothing
+    if (!targetMeal || targetMeal.classList.contains('hidden') || targetMeal.classList.contains('completed')) return;
   
+    // Only consider active (visible and not completed) meals for redistribution
+    const activeMeals = Array.from(document.querySelectorAll('.meal')).filter(
+      meal => !meal.classList.contains('hidden') && !meal.classList.contains('completed')
+    );
+    
     if (d > 0) {
       let remaining = d;
+      // Donors: any active meal except the target
       let donors = activeMeals.filter(meal => meal !== targetMeal);
       let idx = 0;
       while (remaining > 0 && donors.length) {
@@ -42,6 +48,7 @@ function getActiveMeals() {
       }
     } else if (d < 0) {
       let remaining = -d;
+      // Receivers: any active meal except the target
       let receivers = activeMeals.filter(meal => meal !== targetMeal);
       let idx = 0;
       while (remaining > 0 && getCarbs(targetMeal) > 0 && receivers.length) {
@@ -59,6 +66,7 @@ function getActiveMeals() {
    * Sweet Treat: Subtract 3 carbs from the overall pool in a round-robin manner.
    */
   function applySweetTreat() {
+    // Only adjust active meals (visible and not completed)
     const activeMeals = getActiveMeals();
     let totalToSubtract = 3;
     let idx = 0;
@@ -81,6 +89,11 @@ function getActiveMeals() {
     document.querySelectorAll('.meal').forEach(meal => {
       setCarbs(meal, 1);
       meal.classList.remove('completed');
+      // Re-enable all buttons in the meal if they were disabled
+      const buttons = meal.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.disabled = false;
+      });
     });
     document.getElementById('toggleFourthMeal').checked = false;
     document.getElementById('toggleWorkoutCarbs').checked = false;
@@ -88,11 +101,17 @@ function getActiveMeals() {
   }
   
   /**
-   * Toggle the "completed" state on a meal to mark it as eaten.
+   * Toggle the "completed" state on a meal to mark it as eaten,
+   * and disable/enable its buttons accordingly.
    */
   function checkOffMeal(mealId) {
     const mealElem = document.getElementById(mealId);
-    mealElem.classList.toggle('completed');
+    const isCompleted = mealElem.classList.toggle('completed');
+    // Disable or re-enable all buttons in this meal based on its state
+    const buttons = mealElem.querySelectorAll('button');
+    buttons.forEach(btn => {
+      btn.disabled = isCompleted;
+    });
   }
   
   // Event Listeners
@@ -110,6 +129,8 @@ function getActiveMeals() {
   // Pre-Workout Extra Carbs toggle for Meal 1: Simply add or subtract 3 carbs directly.
   document.getElementById('toggleWorkoutCarbs').addEventListener('change', function () {
     const meal1 = document.getElementById('meal1');
+    // If the meal is completed, do nothing
+    if (meal1.classList.contains('completed')) return;
     const current = getCarbs(meal1);
     if (this.checked) {
       setCarbs(meal1, current + 3);
