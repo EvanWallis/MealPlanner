@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Plan Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>Meal Plan Tracker</h1>
+        <p class="subtitle">Track your meals simply and easily.</p>
+        
+        <div class="toggle-group">
+            <label>
+                <input type="checkbox" id="toggleFourthMeal"> Enable 4th Meal
+            </label>
+        </div>
+
+        <div class="meal-list" id="mealList">
+            <div class="meal" id="meal1">
+                <h2>Meal 1</h2>
+                <p>Protein: <span class="protein">1</span></p>
+                <p>Carbs: <span class="carbs">1</span></p>
+                <button onclick="adjustCarbs(1, 1)">+ Carbs</button>
+                <button onclick="adjustCarbs(1, -1)">- Carbs</button>
+            </div>
+            <div class="meal" id="meal2">
+                <h2>Meal 2</h2>
+                <p>Protein: <span class="protein">1</span></p>
+                <p>Carbs: <span class="carbs">1</span></p>
+                <button onclick="adjustCarbs(2, 1)">+ Carbs</button>
+                <button onclick="adjustCarbs(2, -1)">- Carbs</button>
+            </div>
+            <div class="meal" id="meal3">
+                <h2>Meal 3</h2>
+                <p>Protein: <span class="protein">1</span></p>
+                <p>Carbs: <span class="carbs">1</span></p>
+                <button onclick="adjustCarbs(3, 1)">+ Carbs</button>
+                <button onclick="adjustCarbs(3, -1)">- Carbs</button>
+            </div>
+            <div class="meal hidden" id="meal4">
+                <h2>Meal 4</h2>
+                <p>Protein: <span class="protein">1</span></p>
+                <p>Carbs: <span class="carbs">1</span></p>
+                <button onclick="adjustCarbs(4, 1)">+ Carbs</button>
+                <button onclick="adjustCarbs(4, -1)">- Carbs</button>
+            </div>
+        </div>
+
+        <div class="toggle-group">
+            <label>
+                <input type="checkbox" id="toggleWorkoutCarbs"> Pre-Workout Carbs (+3 Carbs)
+            </label>
+        </div>
+        
+        <button id="sweetTreatBtn">Sweet Treat (-3 Carbs)</button>
+        <button id="resetBtn">Reset for Next Day</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
