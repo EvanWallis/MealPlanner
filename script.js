@@ -1,59 +1,79 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let totalCarbs = 3; // Default carb servings (one per meal)
-    let sweetTreatUsed = false;
+    const meals = document.querySelectorAll(".meal");
+    const sweetTreatBtn = document.getElementById("sweetTreatBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const preWorkoutCheckbox = document.getElementById("preWorkoutToggle");
+    const fourthMealToggle = document.getElementById("fourthMealToggle");
+    const fourthMeal = document.getElementById("meal4");
 
-    // Toggle 4th meal visibility
-    document.getElementById("toggleFourthMeal").addEventListener("change", function () {
-        document.getElementById("meal4").classList.toggle("hidden", !this.checked);
+    let totalCarbs = 0;
+
+    meals.forEach((meal) => {
+        const carbsDisplay = meal.querySelector(".carbs-count");
+        let carbs = 1; // Default carbs per meal
+
+        // Get buttons
+        const addCarbsBtn = meal.querySelector(".add-carbs");
+        const subtractCarbsBtn = meal.querySelector(".subtract-carbs");
+        const mealCheckbox = meal.querySelector(".meal-checkbox");
+
+        // Add Carbs
+        addCarbsBtn.addEventListener("click", function () {
+            if (totalCarbs < 10) { // Ensure carbs do not exceed 10
+                carbs++;
+                totalCarbs++;
+                carbsDisplay.textContent = carbs;
+            }
+        });
+
+        // Subtract Carbs
+        subtractCarbsBtn.addEventListener("click", function () {
+            if (carbs > 0) {
+                carbs--;
+                totalCarbs--;
+                carbsDisplay.textContent = carbs;
+            }
+        });
+
+        // Mark meal as completed
+        mealCheckbox.addEventListener("change", function () {
+            if (this.checked) {
+                meal.style.opacity = "0.5"; // Dim the meal when checked
+            } else {
+                meal.style.opacity = "1";
+            }
+        });
     });
 
-    // Pre-Workout Carb Toggle (+3 Carbs)
-    document.getElementById("toggleWorkoutCarbs").addEventListener("change", function () {
-        totalCarbs += this.checked ? 3 : -3;
-        updateCarbDisplay();
-    });
-
-    // Adjust Carbs (Ensuring a meal can’t go negative)
-    function adjustCarbs(mealNumber, amount) {
-        let mealCarbs = document.querySelector(`#meal${mealNumber} .carbs`);
-        let currentCarbs = parseInt(mealCarbs.textContent);
-
-        if (amount > 0 && totalCarbs > 0) {
-            mealCarbs.textContent = currentCarbs + 1;
-            totalCarbs--;
-        } else if (amount < 0 && currentCarbs > 0) {
-            mealCarbs.textContent = currentCarbs - 1;
-            totalCarbs++;
-        }
-        updateCarbDisplay();
-    }
-
-    // Sweet Treat (-3 Carbs, Once per Day)
-    document.getElementById("sweetTreatBtn").addEventListener("click", function () {
-        if (!sweetTreatUsed && totalCarbs >= 3) {
+    // Sweet Treat Button (-3 Carbs)
+    sweetTreatBtn.addEventListener("click", function () {
+        if (totalCarbs >= 3) {
             totalCarbs -= 3;
-            sweetTreatUsed = true;
-            alert("Enjoy your treat! 🍫 (-3 Carbs)");
-            updateCarbDisplay();
+            alert("Sweet treat consumed! 3 carbs deducted.");
         } else {
-            alert("Not enough carbs left for a sweet treat!");
+            alert("Not enough carbs available for a sweet treat.");
         }
     });
 
-    // Reset for Next Day (Restores Default Values)
-    document.getElementById("resetBtn").addEventListener("click", function () {
-        document.querySelectorAll(".protein").forEach(el => el.textContent = "1");
-        document.querySelectorAll(".carbs").forEach(el => el.textContent = "1");
-        totalCarbs = 3;
-        sweetTreatUsed = false;
-        document.getElementById("toggleWorkoutCarbs").checked = false;
-        document.getElementById("toggleFourthMeal").checked = false;
-        document.getElementById("meal4").classList.add("hidden");
-        alert("New day, fresh start! ✅");
-        updateCarbDisplay();
+    // Reset Button
+    resetBtn.addEventListener("click", function () {
+        meals.forEach((meal) => {
+            meal.querySelector(".carbs-count").textContent = "1"; // Reset carbs
+            meal.querySelector(".meal-checkbox").checked = false;
+            meal.style.opacity = "1";
+        });
+        totalCarbs = 0;
+        preWorkoutCheckbox.checked = false;
+        fourthMealToggle.checked = false;
+        fourthMeal.style.display = "none";
     });
 
-    function updateCarbDisplay() {
-        console.log("Remaining Carbs:", totalCarbs);
-    }
+    // Toggle Fourth Meal
+    fourthMealToggle.addEventListener("change", function () {
+        if (this.checked) {
+            fourthMeal.style.display = "block";
+        } else {
+            fourthMeal.style.display = "none";
+        }
+    });
 });
