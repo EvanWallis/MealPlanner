@@ -133,6 +133,18 @@ button:active {
   background: var(--danger-dark);
 }
 
+.small-red-btn {
+  background-color: var(--danger-color);
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  color: white;
+}
+
+.small-red-btn:hover {
+  background-color: var(--danger-dark);
+}
+
 /* Check Off Button */
 .meal-actions {
   display: flex;

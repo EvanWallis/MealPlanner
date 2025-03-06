@@ -180,6 +180,34 @@ function applySweetTreat() {
 }
 
 /**
+ * Add +1 carb to each active (non-completed) meal.
+ * This function only works once per day (tracked via localStorage).
+ */
+function addCarbToAll() {
+  // Get today's date in YYYY-MM-DD format.
+  const today = new Date().toISOString().split('T')[0];
+  const lastBoost = localStorage.getItem("lastCarbBoost");
+  
+  // If already used today, alert and exit.
+  if (lastBoost === today) {
+    alert("You have already used the carb boost today!");
+    return;
+  }
+  
+  // Loop through all meals and add +1 carb for non-completed meals.
+  document.querySelectorAll('.meal').forEach(meal => {
+    if (!meal.classList.contains('completed')) {
+      const currentCarbs = getCarbs(meal);
+      setCarbs(meal, currentCarbs + 1);
+    }
+  });
+  
+  // Mark that the boost has been used today.
+  localStorage.setItem("lastCarbBoost", today);
+  saveState();
+}
+
+/**
  * Reset all meals: set each meal to 1 carb and 1 protein and clear any completion.
  */
 function resetMeals() {
@@ -225,7 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-  
+
+  // Attach event listener for the "+1 Carb to All" button.
+const addCarbAllBtn = document.getElementById("addCarbAllBtn");
+if (addCarbAllBtn) {
+  addCarbAllBtn.addEventListener("click", addCarbToAll);
+}
+
   // Attach event listeners for protein adjustment buttons.
   ['1', '2', '3', '4'].forEach(num => {
     const meal = document.getElementById(`meal${num}`);
