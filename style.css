@@ -1,79 +1,69 @@
 /* General Styling */
 body {
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #f0f4f8;
     text-align: center;
     margin: 0;
-    padding: 30px;
-    line-height: 1.6;
-    color: #333;
+    padding: 20px;
+    color: #2d3748;
   }
   
   .container {
-    max-width: 450px;
+    max-width: 500px;
     margin: 20px auto;
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .container:hover {
-    transform: translateY(-5px);
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   }
   
   h1 {
-    font-size: 26px;
-    color: #2c3e50;
+    font-size: 24px;
+    color: #2c5282;
     margin-bottom: 10px;
     font-weight: 600;
   }
   
   .subtitle {
     font-size: 16px;
-    color: #7f8c8d;
-    margin-bottom: 25px;
+    color: #4a5568;
+    margin-bottom: 20px;
   }
   
   /* Meal Tracking */
   .meal {
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
-    padding: 18px;
-    margin: 15px 0;
-    border-radius: 10px;
+    background: #e6f0ff;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 12px;
     transition: all 0.3s ease;
-    border-left: 5px solid #2196f3;
     text-align: left;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  .meal:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(66, 153, 225, 0.1);
   }
   
   .meal.completed {
     opacity: 0.6;
-    text-decoration: line-through;
-    border-left-color: #9e9e9e;
-    background: linear-gradient(to right, #eceff1, #cfd8dc);
+    background: #edf2f7;
+    box-shadow: none;
   }
   
   .meal h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    color: #1565c0;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #3182ce;
     font-weight: 600;
   }
   
   .meal.completed h2 {
-    color: #78909c;
+    text-decoration: line-through;
+    color: #718096;
   }
   
   .meal p {
-    font-size: 15px;
-    margin: 6px 0;
-    color: #455a64;
+    font-size: 16px;
+    margin: 8px 0;
+    color: #4a5568;
+    font-weight: 500;
   }
   
   .hidden {
@@ -81,52 +71,52 @@ body {
   }
   
   /* Buttons & Toggles */
-  button, input[type="checkbox"] {
+  button {
     cursor: pointer;
     font-size: 16px;
-    border-radius: 5px;
-    transition: all 0.2s ease;
-  }
-  
-  button {
-    background: #1e88e5;
+    border-radius: 8px;
+    background: #4299e1;
     color: white;
     padding: 12px 20px;
     border: none;
     font-weight: 500;
     margin: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(66, 153, 225, 0.3);
+    transition: all 0.2s ease;
   }
   
   button:hover {
-    background: #1565c0;
+    background: #3182ce;
     transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(66, 153, 225, 0.4);
   }
   
   button:active {
     transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   #sweetTreatBtn {
-    background: #e53935;
+    background: #f56565;
+    box-shadow: 0 2px 5px rgba(245, 101, 101, 0.3);
   }
   
   #sweetTreatBtn:hover {
-    background: #c62828;
+    background: #e53e3e;
+    box-shadow: 0 4px 8px rgba(245, 101, 101, 0.4);
   }
   
   #resetBtn {
-    background: #43a047;
+    background: #48bb78;
+    box-shadow: 0 2px 5px rgba(72, 187, 120, 0.3);
   }
   
   #resetBtn:hover {
-    background: #2e7d32;
+    background: #38a169;
+    box-shadow: 0 4px 8px rgba(72, 187, 120, 0.4);
   }
   
   .toggle-group {
-    margin: 15px 0;
+    margin: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,26 +124,91 @@ body {
   }
   
   input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #1e88e5;
+    width: 20px;
+    height: 20px;
+    accent-color: #4299e1;
+    cursor: pointer;
   }
   
   label {
     font-size: 16px;
-    color: #455a64;
+    color: #4a5568;
     font-weight: 500;
   }
   
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
+  /* Mobile Responsiveness */
+  @media (max-width: 520px) {
     .container {
-      max-width: 100%;
-      padding: 20px 15px;
+      margin: 10px;
     }
     
-    button {
-      padding: 10px 15px;
-      font-size: 14px;
+    .meal {
+      padding: 15px;
+      margin: 10px;
     }
+  }
+  
+  /* Based on the screenshot - specific styling for meal tracking app */
+  .meal {
+    position: relative;
+    background: #e6f0ff;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .meal h2 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c5282;
+  }
+  
+  .meal p {
+    margin: 8px 0;
+    font-size: 17px;
+    color: #4a5568;
+  }
+  
+  .meal button {
+    margin-top: 10px;
+    margin-right: 8px;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  /* Checkbox styling */
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #4299e1;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+    background-color: white;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: #4299e1;
+  }
+  
+  input[type="checkbox"]:checked::after {
+    content: '✓';
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
   }

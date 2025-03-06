@@ -64,10 +64,16 @@ function getActiveMeals() {
   
   /**
    * Sweet Treat: Subtract 3 carbs from the overall pool in a round-robin manner.
+   * If the total available carbs (among active meals) is less than 3, deny the sweet treat.
    */
   function applySweetTreat() {
-    // Only adjust active meals (visible and not completed)
     const activeMeals = getActiveMeals();
+    // Calculate total available carbs across all active meals
+    const totalActiveCarbs = activeMeals.reduce((sum, meal) => sum + getCarbs(meal), 0);
+    if (totalActiveCarbs < 3) {
+      alert("Not enough carbs available for a sweet treat!");
+      return;
+    }
     let totalToSubtract = 3;
     let idx = 0;
     while (totalToSubtract > 0 && activeMeals.length) {
@@ -126,7 +132,8 @@ function getActiveMeals() {
     }
   });
   
-  // Pre-Workout Extra Carbs toggle for Meal 1: Simply add or subtract 3 carbs directly.
+  // Pre-Workout Extra Carbs toggle for Meal 1:
+  // This toggle simply adds (or subtracts) 3 carbs directly to Meal 1 without redistributing.
   document.getElementById('toggleWorkoutCarbs').addEventListener('change', function () {
     const meal1 = document.getElementById('meal1');
     // If the meal is completed, do nothing
