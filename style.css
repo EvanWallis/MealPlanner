@@ -1,4 +1,3 @@
-/* Base Styles with improved variables and defaults */
 :root {
   --primary-color: #3498db;
   --primary-dark: #2980b9;
@@ -54,15 +53,12 @@ h1 {
   border-bottom: 2px solid var(--primary-color);
 }
 
-/* Meal List with improved spacing and visuals */
 .meal-list {
-  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* Meal card content organization */
 .meal {
   border: 1px solid var(--border-color);
   padding: 18px;
@@ -85,73 +81,56 @@ h1 {
   margin: 0;
   font-size: 20px;
   color: var(--text-primary);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .meal p {
   margin: 0;
   font-size: 16px;
   color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-/* Group controls for each nutrient type */
+/* Nutrient Controls Layout */
 .nutrient-controls {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+  gap: 8px;
 }
 
 .nutrient-controls p {
   margin: 0;
-  min-width: 100px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.nutrient-controls button {
-  min-width: auto;
-  flex: 0 0 auto;
+.button-group {
+  display: flex;
+  gap: 6px;
 }
 
-/* Bottom actions */
+/* Protein & Carbs Emphasis */
+.protein,
+.carbs {
+  background-color: rgba(52, 152, 219, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Meal Actions & App Actions */
 .meal-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 5px;
 }
 
-/* Protein and Carbs Styling with better emphasis */
-.meal .protein {
-  font-weight: 600;
-  color: var(--text-primary);
-  background-color: rgba(52, 152, 219, 0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-.meal .carbs {
-  font-weight: 600;
-  color: var(--text-primary);
-  background-color: rgba(52, 152, 219, 0.1);
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-/* Button Container for better layout */
-.button-container {
+.app-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 5px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-/* Improved Buttons */
+/* Buttons */
 button {
   background-color: var(--primary-color);
   border: none;
@@ -165,7 +144,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 100px;
+  min-width: 90px;
 }
 
 button:hover {
@@ -184,24 +163,27 @@ button:disabled {
   transform: none;
   box-shadow: none;
 }
-
-/* Button styling for add and subtract buttons */
-button.add-protein, button.add-carbs {
+/* Plus Buttons: Green */
+.add-carbs,
+.add-protein {
   background-color: var(--success-color);
 }
 
-button.add-protein:hover, button.add-carbs:hover {
+.add-carbs:hover,
+.add-protein:hover {
   background-color: var(--success-dark);
 }
 
-button.subtract-protein, button.subtract-carbs {
+/* Minus Buttons: Red */
+.subtract-carbs,
+.subtract-protein {
   background-color: var(--danger-color);
 }
 
-button.subtract-protein:hover, button.subtract-carbs:hover {
+.subtract-carbs:hover,
+.subtract-protein:hover {
   background-color: var(--danger-dark);
 }
-
 #sweetTreatBtn {
   background-color: var(--danger-color);
 }
@@ -218,7 +200,7 @@ button.subtract-protein:hover, button.subtract-carbs:hover {
   background-color: var(--success-dark);
 }
 
-/* Completed Meal Styling with better visual indication */
+/* Completed Meal Styling */
 .meal.completed {
   opacity: 0.7;
   border-left: 4px solid var(--success-color);
@@ -268,14 +250,23 @@ button.subtract-protein:hover, button.subtract-carbs:hover {
   }
   
   button {
-    padding: 10px;
+    padding: 8px 12px;
     font-size: 14px;
-    flex: 1;
-    min-width: 0;
+    min-width: 80px;
   }
   
-  .button-container {
-    width: 100%;
+  .button-group {
+    gap: 4px;
+  }
+  
+  .nutrient-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .app-actions {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
